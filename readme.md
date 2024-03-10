@@ -2,6 +2,15 @@
 
 This Node.js application allows you to message all users participating in a Reddit thread. It utilizes the Reddit API to retrieve usernames from a specified thread and sends them a message with a predefined subject and content.
 
+This repo was put together to make it easier for the author to do product validation. Steps taken for this usecase:
+1. Find reddit thread related to the product you are seeking to validate
+2. Send message to users. Example message:
+
+```
+hey, there. sorry to bug you, just wanted to ask a quick question if that's alright..i'm building a [thing you are building]. [Statement about the value add of the thing you're building] .. after reading a few of your recent comments, it looks like you might be able to give insight on the validity of this product. I would love to hear your thoughts if you have them or, if you're interested we could [offer of value to the potential user]? .. thanks for your time, and have a good one!`
+```
+3. user reddit's message UI to continue conversations/further engage potential users.
+
 ## Instructions
 
 Follow these steps to set up and use the Reddit Message Sender:
@@ -33,7 +42,7 @@ Follow these steps to set up and use the Reddit Message Sender:
    - Run `npm install` to install required dependencies.
 
 5. **Run the Application**
-   - Execute `npm start` to run the application.
+   - Execute `node index.js` to run the application and send one set of messages.
    - The program will retrieve usernames from the specified thread and send them the message.
 
 ## Example
