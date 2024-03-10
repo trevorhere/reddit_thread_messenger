@@ -9,7 +9,7 @@ This repo was put together to make it easier for the author to do product valida
 ```
 hey, there. sorry to bug you, just wanted to ask a quick question if that's alright..i'm building a [thing you are building]. [Statement about the value add of the thing you're building] .. after reading a few of your recent comments, it looks like you might be able to give insight on the validity of this product. I would love to hear your thoughts if you have them or, if you're interested we could [offer of value to the potential user]? .. thanks for your time, and have a good one!`
 ```
-3. user reddit's message UI to continue conversations/further engage potential users.
+3. Use reddit's message UI to continue conversations/further engage potential users.
 
 ## Instructions
 
