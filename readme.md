@@ -1,6 +1,10 @@
-# Reddit Message Sender
+![header image](<header.png>)
+
+# Reddit Thread Messenger 
 
 This Node.js application allows you to message all users participating in a Reddit thread. It utilizes the Reddit API to retrieve usernames from a specified thread and sends them a message with a predefined subject and content.
+
+## Usage
 
 This repo was put together to make it easier for the author to do product validation. Steps taken for this usecase:
 1. Find reddit thread related to the product you are seeking to validate
@@ -56,3 +60,4 @@ const threadId = 'abc123'; // Replace with your thread ID
 // Set the message subject and content
 const messageSubject = 'Greetings from Reddit Bot';
 const messageContent = `Hello there! You're receiving this message from our Reddit bot.`;
+
