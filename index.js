@@ -3,36 +3,25 @@ const snoowrap = require('snoowrap');
 const { URLSearchParams } = require('url');
 const FormData = require('form-data');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+const { REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET, REDDIT_USER, REDDIT_PASS } = process.env;
+
 const r = new snoowrap({
-  userAgent: 'reddit-app:v0.1 (by /u/sviribo)',
-  clientId: process.env.REDDIT_CLIENT_ID,
-  clientSecret: process.env.REDDIT_CLIENT_SECRET,
-  username: process.env.REDDIT_USER,
-  password: process.env.REDDIT_PASS,
+  userAgent: `reddit-app:v0.1 (by /u/${REDDIT_USER})`,
+  clientId: REDDIT_CLIENT_ID,
+  clientSecret: REDDIT_CLIENT_SECRET,
+  username: REDDIT_USER,
+  password: REDDIT_PASS,
 });
 
-const subredditName = 'guns'; // Example: 'test'
-const threadId = '17qnvcp'; // Example: 't3_jfzv7'
-const messageSubject = 'test';
-const messageContent = `hey, there.
+const threadId = 'your_thread_id_here';
+const messageSubject = 'your_message_subject_here';
+const messageContent = `your_message_content_here`;
 
-sorry to bug you, just wanted to ask a quick question if that's alright.. 
-
-i'm building a small electronic device that magnetically attaches to any kind of firearm.  The device notifies the firearm owner if the firearm has been moved by text and/or phone call, guaranteeing the safety and security of firearms.
-
-after reading a few of your recent comments, it looks like you might be able to give insight on the validity of this product. I would love to hear your thoughts if you have them or, if you're interested we could send you a device to test out?
-
-thanks for your time, and have a good one!
-` ;
-
-/// 17qnvcp
 async function main() {
   const usernames = await getUsersFromPost(threadId);
   console.log(`retrieved ${usernames.size} usernames`);
   const token = await getAccessToken();
-  // let set = new Set()
-  // set.add('tr3vor_lan3')
-  const result = await sendMessages(usernames, token);
+  await sendMessages(usernames, token);
 }
 
 async function getUsersFromPost(threadId) {
@@ -93,14 +82,14 @@ async function sendMessage(to, access_token) {
 async function getAccessToken() {
   const params = new URLSearchParams();
   params.append('grant_type', 'password');
-  params.append('username', process.env.REDDIT_USER);
-  params.append('password', process.env.REDDIT_PASS);
+  params.append('username', REDDIT_USER);
+  params.append('password', REDDIT_PASS);
 
   const response = await fetch('https://www.reddit.com/api/v1/access_token', {
     method: 'POST',
     body: params,
     headers: {
-      'Authorization': 'Basic ' + Buffer.from(`${process.env.REDDIT_CLIENT_ID}:${process.env.REDDIT_CLIENT_SECRET}`).toString('base64'),
+      'Authorization': 'Basic ' + Buffer.from(`${REDDIT_CLIENT_ID}:${REDDIT_CLIENT_SECRET}`).toString('base64'),
       'Content-Type': 'application/x-www-form-urlencoded',
     },
   });
